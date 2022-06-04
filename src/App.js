@@ -1,11 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React, { useState } from "react";
+import logo from "./logo.svg";
+import { Counter } from "./features/counter/Counter";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./App.css";
+import Dashboard from "./features/dashboard/Dashboard";
+import Preferences from "./features/preferences/Preferences";
+import Login from "./features/login/Login";
 
 function App() {
+  const [token, setToken] = useState();
+  if (!token) {
+    return <Login setToken={setToken} />;
+  }
+
   return (
     <div className="App">
+      <h1>Application</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/preferences" element={<Preferences />} />
+        </Routes>
+      </BrowserRouter>
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <Counter />
