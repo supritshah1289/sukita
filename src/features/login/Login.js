@@ -23,7 +23,12 @@ function Login({ setToken }) {
       email,
       password,
     });
-    setToken(token);
+    if (token.error === "unauthorized") {
+      return;
+    } else {
+      setToken(token);
+    }
+    console.log("token: " + JSON.stringify(token));
   };
 
   return (
