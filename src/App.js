@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
 import { Counter } from "./features/counter/Counter";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./App.css";
 import Dashboard from "./features/dashboard/Dashboard";
 import Preferences from "./features/preferences/Preferences";
@@ -16,16 +16,23 @@ function App() {
   return (
     <div className="App">
       <h1>Application</h1>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/preferences" element={<Preferences />} />
-        </Routes>
-      </BrowserRouter>
 
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <div>
+          <h1>Hello Suprit</h1>
+          <nav
+            style={{
+              borderBottom: "solid 1px",
+              paddingBottom: "1rem",
+            }}
+          >
+            <Link to="/dashboard">Dashboard</Link> |{" "}
+            <Link to="/preferences">Preferences</Link>
+          </nav>
+        </div>
         <Counter />
+
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
